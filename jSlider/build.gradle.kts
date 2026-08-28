@@ -10,7 +10,7 @@ android {
     }
 
     defaultConfig {
-        minSdk = 24
+        minSdk = 17
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -29,7 +29,6 @@ android {
 
 dependencies {
     implementation(libs.androidx.viewpager)
-    implementation(libs.kotlin.stdlib.jdk8)
 }
 
 afterEvaluate {
@@ -40,7 +39,6 @@ afterEvaluate {
                 artifactId = "Jummania-Slider"
                 version = "4.7"
 
-                // এখন এটি সঠিকভাবে 'release' কম্পোনেন্টটি খুঁজে পাবে
                 from(components["release"])
             }
         }
