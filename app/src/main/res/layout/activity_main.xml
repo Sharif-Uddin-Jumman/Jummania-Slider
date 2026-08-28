@@ -1,19 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <com.jummania.JSlider
+        android:id="@+id/jSlider"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:indicatorPaddingBottom="22dp"
+        app:slideAnimation="DEPTH_SLIDE2"
+        app:slidingDuration="2222" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="11dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/start"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="9dp"
+            android:text="@string/start_sliding" />
+
+        <Button
+            android:id="@+id/stop"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="9dp"
+            android:text="@string/stop_sliding" />
+
+    </LinearLayout>
+
+    <!--
+Change Duration of Slidng:
+     app:slidingDuration="2222"
+
+Change indicator Size.
+    app:indicatorSize="15dp"
+
+Add padding in Slider:
+    app:sliderPaddingRight="0dp"
+    app:sliderPaddingLeft="0dp"
+    app:sliderPaddingTop="0dp"
+    app:sliderPaddingBottom="0dp"
+
+Change Indicator Padding bottom:
+    app:indicatorPaddingBottom="22dp"
+
+You can hide or show Indicator:
+    app:enableIndicator="true"
+
+You can enable or desable auto sliding:
+    app:enableAutoSliding="true"
+
+Change Default Indicator Color:
+    app:defaultIndicatorColor="@color/defaultColor"
+
+Change Selected Indicator Color:
+    app:selectedIndicatorColor="@color/selectedColor"
+     -->
+
+
+</LinearLayout>

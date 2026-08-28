@@ -1,10 +1,14 @@
 package com.jummania.jummania_slider
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.jummania.JSlider
+import com.jummania.jummania_slider.sliders.DefaultSlider
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,5 +20,102 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val jSlider: JSlider = findViewById(R.id.jSlider)  //find
+        //  val jSlider:JSlider = JSlider(this)           // or bind the slider
+
+        //  jSlider.setSlideAnimation(AnimationTypes.ANTI_CLOCK_SPIN)
+        //  jSlider.setIndicatorShapeTypes(ShapeTypes.HEART)
+        //  jSlider.setIndicatorUpdateMode(UpdateTypes.ANIMATED)
+
+        /** You can add animation like that, 16 Animations added. check below the list of animation:
+         *     ANTI_CLOCK_SPIN,
+         *     BACKGROUND_TO_FOREGROUND,
+         *     CARD_STACK,
+         *     CLOCK_SPIN,
+         *     CUBE_IN_DEPTH,
+         *     CUBE_IN_ROTATION,
+         *     CUBE_IN_SCALING,
+         *     CUBE_OUT_DEPTH,
+         *     CUBE_OUT_ROTATION,
+         *     CUBE_OUT_SCALING,
+         *     CUBE_IN,
+         *     CUBE_OUT,
+         *     DEPTH_PAGE,
+         *     DEPTH_SLIDE,
+         *     DEPTH_SLIDE2,
+         *     DEPTH_TRANSFORMATION,
+         *     DEPTH_ZOOM_OUT,
+         *     FADEOUT,
+         *     FADE_PAGE,
+         *     FAN_TRANSFORMATION,
+         *     FIDGET_SPINNER,
+         *     FLIP_HORIZONTAL,
+         *     FLIP_VERTICAL,
+         *     FOLD_PAGE,
+         *     FOREGROUND_TO_BACKGROUND,
+         *     GATE,
+         *     HINGE,
+         *     POP,
+         *     ROTATE_DOWN,
+         *     ROTATE_UP,
+         *     SPINNER,
+         *     SPINNER_TRANSFORMATION,
+         *     TABLET_SLIDE,
+         *     TOSS,
+         *     VERTICAL_FLIP,
+         *     VERTICAL_SHUT,
+         *     ZOOM_FADE,
+         *     ZOOM_IN,
+         *     ZOOM_OUT
+         */
+
+        /** You can also set ViewPager.PageTransformer by:
+         * jSlider.setPageTransformer(boolean, TransformerClass())
+         */
+
+        /** add 'addOnPageChangeListener' if you really need
+         *//*
+        jSlider.addOnSlideChangeListener(object : JSlider.OnSlideChangeListener {
+            override fun onSliderScrolled(
+                position: Int, positionOffset: Float, positionOffsetPixels: Int
+            ) {
+                Log.d(
+                    "JSlider",
+                    "position: $position, positionOffset: $positionOffset, positionOffsetPixels: $positionOffsetPixels"
+                )
+            }
+
+            override fun onSliderSelected(position: Int) {
+                Log.d("JSlider", "position: $position")
+            }
+
+            override fun onSliderScrollStateChanged(state: Int) {
+                Log.d("JSlider", "state: $state")
+            }
+
+        })
+        */
+
+
+        jSlider.setSlider(DefaultSlider()) // DefaultSlider
+        // jSlider.setSlider(InfinitySlider()) // InfinitySlider
+
+        val start: Button = findViewById(R.id.start)
+        val stop: Button = findViewById(R.id.stop)
+
+        //  jSlider.slideToPosition(100, false)
+
+        start.setOnClickListener {
+            jSlider.startAutoSliding() // To start autoSliding manually
+            Toast.makeText(this@MainActivity, "Slider is now in motion", Toast.LENGTH_SHORT).show()
+        }
+
+        stop.setOnClickListener {
+            jSlider.stopAutoSliding() // To stop autoSliding manually
+            Toast.makeText(this@MainActivity, "Slider has come to a halt", Toast.LENGTH_SHORT)
+                .show()
+        }
+
     }
 }
